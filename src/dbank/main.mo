@@ -2,8 +2,8 @@ import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
 
 actor DBank{
-  var currentValue = 300;
-  currentValue := 100;  //To change value in a variable
+  stable var currentValue: Nat = 300; //Persisted Variable -> stable Keyword
+  //currentValue := 100;  //To change value in a variable
 
   let id = 123211244; //Does not allow to change data -> constant -> immutable
 
@@ -25,7 +25,10 @@ actor DBank{
     }else{
       Debug.print("Insufficient Balance");
     }
-  }
-  // topUp();
+  };
+
+  public query func checkBalance() : async Nat{
+    return currentValue;
+  };
 }
 
