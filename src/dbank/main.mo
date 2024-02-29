@@ -7,7 +7,7 @@ actor DBank{
 
   let id = 123211244; //Does not allow to change data -> constant -> immutable
 
-  Debug.print(debug_show(currentValue));  //To Print a value from variable
+  //Debug.print(debug_show(currentValue));  //To Print a value from variable
   // Debug.print(debug_show(id)); 
 
   //Defining A Function:
@@ -17,8 +17,14 @@ actor DBank{
   };
 
   public func withdraw(amount: Nat){
-    currentValue -= amount;
-    Debug.print(debug_show(currentValue));
+    let diff: Int = currentValue - amount;
+
+    if(diff >= 0){
+      currentValue -= amount;
+      Debug.print(debug_show(currentValue));
+    }else{
+      Debug.print("Insufficient Balance");
+    }
   }
   // topUp();
 }
