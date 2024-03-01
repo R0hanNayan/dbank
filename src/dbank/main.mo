@@ -4,8 +4,8 @@ import Time "mo:base/Time";
 import Float "mo:base/Float";
 
 actor DBank{
-  stable var currentValue: Float = 300; //Persisted Variable -> stable Keyword
-  //currentValue := 100;  //To change value in a variable
+  stable var currentValue: Float = 0; //Persisted Variable -> stable Keyword
+  // currentValue := 100;  //To change value in a variable
 
   stable var startTime = Time.now();
   // Debug.print(debug_show(startTime));
@@ -36,8 +36,7 @@ actor DBank{
     return currentValue;
   };
 
-
-  public func compound(){
+  public func compound() {
     let currentTime = Time.now();
     let timeElapsedNS = currentTime - startTime;
     let timeElapsedS = timeElapsedNS / 1000000000;
